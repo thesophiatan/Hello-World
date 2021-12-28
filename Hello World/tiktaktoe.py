@@ -5,9 +5,6 @@
 #If you say no, it will cry and mock you until you say yes.
 #TikTakToe rules. You will choose either X or O. X goes first. Computer chooses position randomly. 
 #The first to get three blocks in a row wins.
-def greet_user():
-    print('Hello, what is your name?')
-    intro_user()
 
 def dislikes_name(name):
     """ Checks if the user's name is disliked by the AI. Disliked names include those that
@@ -22,13 +19,6 @@ def respond_to_disliked_name():
     """
     print("My mom told me not to talk with mythical monsters. Be gone with you, foul demon!")
 
-def intro_user():
-    user_name = str(input())
-    if validate_name(user_name)==False:
-        invalid_name()
-    if dislikes_name(user_name):
-        respond_to_disliked_name()
-        quit
     
 def invalid_name():
     print("That doesn't sound right. Please enter a more believable human name that only has letters.")
@@ -39,19 +29,37 @@ def validate_name(name):
     """
     if name == "" or name.isalpha()==False:
         return False
-        
+    return True
+
+def nice_to_meet(name):
+    """Greets user and let them know how nice it is to meet them.
+    Tells them how long their name is.
+    """
+    print ('It\'s nice to meet you, ' + name.capitalize() + ("! Your name is ") + str(len(name)) + (" letters long."))
+
+
+def intro_user():
+    user_name = str(input())
+    if validate_name(user_name)==False:
+        invalid_name()
+    if dislikes_name(user_name):
+        respond_to_disliked_name()
+        quit
+    if validate_name(user_name):
+        nice_to_meet(user_name)
+
+
+def greet_user():
+    print('Hello, what is your name?')
+    intro_user()
+
 
 ###SOPHIA LOOK UP WHAT THIS IS
 # if __name__ == "__main__":
-greet_user()
-        
-"""
 
 
-def nicetomeet():
-print ('It's nice to meet you,) + user_name.capitalize() + ("!")
 
-
+"""birthday()
 
 def birthday():
 print('When is your birthday?')
@@ -61,3 +69,4 @@ print('You are')+ AGE + ('years old, today is your birthday. Happy Birthday!')
 print('You are')+ AGE + ('years old, and your birthday is coming up within 7 days! Happy early birthday!')
 
 """
+greet_user()
